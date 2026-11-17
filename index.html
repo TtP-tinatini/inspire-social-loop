@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#eeeeee">
+  <title>INSPIRE — Changing Identities</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow: hidden;
+    }
+
+    #experience {
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100svh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      transition: background 0.5s ease;
+    }
+
+    .identity {
+      position: relative;
+      z-index: 1;
+      color: #222;
+    }
+
+    .number {
+      font-size: 12px;
+      letter-spacing: 4px;
+      margin-bottom: 35px;
+      opacity: 0.65;
+    }
+
+    h1 {
+      font-size: clamp(42px, 10vw, 90px);
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: -3px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-top: 20px;
+      opacity: 0.7;
+    }
+
+    #nextButton {
+      position: absolute;
+      z-index: 2;
+      bottom: 12%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 1px solid currentColor;
+      border-radius: 4px;
+      padding: 16px 42px;
+      background: rgba(255,255,255,0.8);
+      color: #222;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    #nextButton:hover {
+      background: #222;
+      color: white;
+    }
+
+    /* Temporary backgrounds for the prototype */
+
+    .instagram {
+      background: linear-gradient(135deg, #f5c6a5, #d9a0b7, #9c9bc9);
+    }
+
+    .facebook {
+      background: linear-gradient(135deg, #dce8f5, #a8c4e5);
+    }
+
+    .x {
+      background: linear-gradient(135deg, #eeeeee, #bdbdbd);
+    }
+
+    .whatsapp {
+      background: linear-gradient(135deg, #d5f2dc, #a3d9b3);
+    }
+
+    .viber {
+      background: linear-gradient(135deg, #e5d9f5, #b9a2df);
+    }
+
+    .tiktok {
+      background: linear-gradient(135deg, #b8e5e2, #e6b8d5);
+    }
+
+    .snapchat {
+      background: linear-gradient(135deg, #fff6a8, #f5df65);
+    }
+
+    .linkedin {
+      background: linear-gradient(135deg, #c9dff1, #91b9da);
+    }
+
+    .threads {
+      background: linear-gradient(135deg, #eeeeee, #c9c9c9);
+    }
+  </style>
+</head>
+
+<body>
+
+  <main id="experience" class="instagram">
+
+    <div class="identity">
+      <div class="number" id="number">IDENTITY 01 / 09</div>
+      <h1 id="platform">Instagram</h1>
+      <div class="subtitle">A DIFFERENT VERSION OF ME</div>
+    </div>
+
+    <button id="nextButton" onclick="nextPage()">
+      FOLLOW ME →
+    </button>
+
+  </main>
+
+  <script>
+    const pages = [
+      { name: "Instagram", style: "instagram", button: "FOLLOW ME →" },
+      { name: "Facebook", style: "facebook", button: "ADD FRIEND →" },
+      { name: "X", style: "x", button: "FOLLOW →" },
+      { name: "WhatsApp", style: "whatsapp", button: "JOIN →" },
+      { name: "Viber", style: "viber", button: "CONNECT →" },
+      { name: "TikTok", style: "tiktok", button: "WATCH ME →" },
+      { name: "Snapchat", style: "snapchat", button: "ADD ME →" },
+      { name: "LinkedIn", style: "linkedin", button: "CONNECT →" },
+      { name: "Threads", style: "threads", button: "CONTINUE →" }
+    ];
+
+    let currentPage = 0;
+
+    function nextPage() {
+      currentPage = (currentPage + 1) % pages.length;
+
+      const page = pages[currentPage];
+
+      document.getElementById("experience").className = page.style;
+      document.getElementById("platform").textContent = page.name;
+      document.getElementById("number").textContent =
+        `IDENTITY ${String(currentPage + 1).padStart(2, "0")} / 09`;
+      document.getElementById("nextButton").textContent = page.button;
+
+      window.history.replaceState(
+        null,
+        "",
+        window.location.pathname + "#page-" + (currentPage + 1)
+      );
+    }
+  </script>
+
+</body>
+</html>
