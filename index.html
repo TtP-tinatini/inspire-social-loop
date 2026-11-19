@@ -45,9 +45,8 @@
       text-align: center;
       padding: 45px 20px 35px;
 
-      background: var(--page-background, var(--yarn));
+      background: color-mix(in srgb, var(--platform-color) 20%, var(--yarn));
       color: var(--ink);
-      transition: background 0.35s ease;
     }
 
     .identity {
@@ -76,26 +75,24 @@
       transition: border-color 0.3s ease;
     }
 
-    /* INSTAGRAM GRADIENT OUTLINE WITH TRANSPARENT CENTRE */
+    /* INSTAGRAM GRADIENT CIRCLE */
 
     #experience.instagram .identity-circle {
-      position: relative;
-      border-color: transparent;
-      background: transparent;
-    }
-
-    #experience.instagram .identity-circle::before {
-      content: "";
-      position: absolute;
-      inset: -6px;
       border: 6px solid transparent;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #FCAF45, #F77737, #E1306C, #C13584, #833AB4) border-box;
-      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-      mask-composite: exclude;
-      pointer-events: none;
+
+      background:
+        linear-gradient(
+          color-mix(in srgb, var(--platform-color) 20%, var(--yarn)),
+          color-mix(in srgb, var(--platform-color) 20%, var(--yarn))
+        ) padding-box,
+        linear-gradient(
+          135deg,
+          #FCAF45 0%,
+          #F77737 25%,
+          #E1306C 50%,
+          #C13584 75%,
+          #833AB4 100%
+        ) border-box;
     }
 
     /* IDENTITY NUMBER */
@@ -119,19 +116,25 @@
       letter-spacing: -0.045em;
       overflow-wrap: anywhere;
 
-      color: #111111;
+      color: var(--platform-color);
+      transition: color 0.25s ease;
     }
 
-    /* INSTAGRAM GRADIENT BACKGROUND */
+    /* INSTAGRAM GRADIENT PLATFORM NAME */
 
-    #experience.instagram {
+    #experience.instagram h1 {
       background: linear-gradient(
-        135deg,
-        #f8e9c8 0%,
-        #f6d9ce 28%,
-        #f0d7e2 60%,
-        #e5dcf2 100%
+        110deg,
+        #F77737 0%,
+        #E1306C 40%,
+        #C13584 70%,
+        #833AB4 100%
       );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
     }
 
     /* SUBTITLE */
@@ -294,7 +297,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       .identity-circle,
-      #experience,
+      h1,
       #nextButton {
         transition: none;
       }
@@ -420,18 +423,6 @@
       experience.style.setProperty(
         "--platform-color",
         page.color
-      );
-
-      // Soft platform-tinted background, keeping black text readable.
-      const hex = page.color.replace("#", "");
-      const base = [238, 232, 219];
-      const rgb = [0, 2, 4].map(i => parseInt(hex.slice(i, i + 2), 16));
-      const mix = rgb.map((value, i) =>
-        Math.round(base[i] * 0.78 + value * 0.22)
-      );
-      experience.style.setProperty(
-        "--page-background",
-        `rgb(${mix.join(", ")})`
       );
 
       platform.textContent = page.name;
