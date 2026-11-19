@@ -40,6 +40,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
 
       text-align: center;
       padding: 45px 20px 35px;
@@ -48,8 +49,6 @@
       color: var(--ink);
     }
 
-    /* MAIN IDENTITY SECTION */
-
     .identity {
       width: 100%;
       max-width: 1000px;
@@ -57,11 +56,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-
-      /* Keeps the main identity composition
-         centred in the available space. */
-
-      margin-top: auto;
     }
 
     /* TRANSPARENT CIRCLE WITH COLOURED OUTLINE */
@@ -148,25 +142,10 @@
       color: #454039;
     }
 
-    /* BOTTOM SECTION:
-       BUTTON + ARTWORK INFORMATION */
-
-    .bottom-section {
-      width: 100%;
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      /* Moves the entire bottom section lower
-         while keeping it within the page layout. */
-
-      margin-top: auto;
-    }
-
     /* BLACK NAVIGATION BUTTON */
 
     #nextButton {
+      margin-top: clamp(85px, 10vh, 110px);
       max-width: 100%;
 
       border: 3px solid #111111;
@@ -205,7 +184,7 @@
       width: 100%;
       max-width: 650px;
 
-      margin-top: 25px;
+      margin-top: 30px;
 
       display: flex;
       flex-direction: column;
@@ -262,6 +241,7 @@
       }
 
       #nextButton {
+        margin-top: 65px;
         padding: 17px 26px;
         font-size: 15px;
       }
@@ -284,20 +264,6 @@
       }
     }
 
-    /* SHORT SCREENS:
-       Prevent the main content and footer
-       from colliding on smaller devices. */
-
-    @media (max-height: 700px) {
-      .identity {
-        margin-top: 0;
-      }
-
-      .bottom-section {
-        margin-top: 65px;
-      }
-    }
-
     @media (prefers-reduced-motion: reduce) {
       .identity-circle,
       h1,
@@ -311,8 +277,6 @@
 <body>
 
   <main id="experience">
-
-    <!-- MAIN IDENTITY COMPOSITION -->
 
     <div class="identity">
 
@@ -334,34 +298,28 @@
 
     </div>
 
-    <!-- BOTTOM SECTION -->
+    <button id="nextButton" type="button">
+      FOLLOW ME →
+    </button>
 
-    <div class="bottom-section">
+    <!-- ARTWORK DESCRIPTION -->
 
-      <button id="nextButton" type="button">
-        FOLLOW ME →
-      </button>
+    <footer class="artwork-info">
 
-      <!-- ARTWORK DESCRIPTION -->
+      <strong>
+        Identity on Loop
+      </strong>
 
-      <footer class="artwork-info">
+      <span>
+        An interactive artwork exploring digital identity.
+      </span>
 
-        <strong>
-          Identity on Loop
-        </strong>
+      <small>
+        Independent art project · Not affiliated with
+        the platforms represented.
+      </small>
 
-        <span>
-          An interactive artwork exploring digital identity.
-        </span>
-
-        <small>
-          Independent art project · Not affiliated with
-          the platforms represented.
-        </small>
-
-      </footer>
-
-    </div>
+    </footer>
 
   </main>
 
