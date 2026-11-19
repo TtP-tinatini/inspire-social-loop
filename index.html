@@ -1,213 +1,147 @@
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#eeeeee">
-  <title>INSPIRE — Changing Identities</title>
-
+  <meta name="theme-color" content="#eee8db">
+  <meta name="color-scheme" content="light">
+  <title>Identity on Loop</title>
   <style>
-   
-    * {
-      box-sizing: border-box;
-    }
-    .profile-photo {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto 28px;
-  border: 3px solid white;
-}
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      overflow: hidden;
-    }
-
+    * { box-sizing: border-box; }
+    :root { --yarn: #eee8db; --ink: #28251f; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--yarn); }
     #experience {
-      width: 100%;
+      --platform-color: #a32672;
       min-height: 100vh;
       min-height: 100svh;
-      position: relative;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 30px;
-      transition: background 0.5s ease;
+      padding: 40px 20px;
+      background: var(--yarn);
+      color: var(--ink);
     }
-
-    .identity {
-      position: relative;
-      z-index: 1;
-      color: #222;
+    .identity { width: 100%; max-width: 1000px; }
+    .profile-photo {
+      width: 110px; height: 110px; border-radius: 50%; object-fit: cover;
+      display: block; margin: 0 auto 28px; border: 3px solid #fffaf1;
     }
-
-    .number {
-      font-size: 12px;
-      letter-spacing: 4px;
-      margin-bottom: 35px;
-      opacity: 0.65;
-    }
-
+    .number { font-size: 12px; letter-spacing: 3px; margin-bottom: 28px; opacity: .72; }
     h1 {
-      font-size: clamp(42px, 10vw, 90px);
+      font-size: clamp(38px, 9vw, 90px);
+      line-height: 1.08;
       font-weight: 700;
       margin: 0;
-      letter-spacing: -3px;
+      letter-spacing: -.045em;
+      overflow-wrap: anywhere;
+      color: var(--platform-color);
+      transition: color .25s ease;
     }
-
-    .subtitle {
-      font-size: 14px;
-      letter-spacing: 2px;
-      margin-top: 20px;
-      opacity: 0.7;
-    }
-
+    .subtitle { font-size: 13px; letter-spacing: 2px; margin-top: 20px; opacity: .78; }
     #nextButton {
-      position: absolute;
-      z-index: 2;
-      bottom: 12%;
-      left: 50%;
-      transform: translateX(-50%);
-      border: 1px solid currentColor;
+      margin-top: clamp(55px, 12vh, 120px);
+      max-width: 100%;
+      border: 2px solid var(--platform-color);
       border-radius: 4px;
-      padding: 16px 42px;
-      background: rgba(255,255,255,0.8);
-      color: #222;
+      padding: 16px 32px;
+      background: transparent;
+      color: var(--platform-color);
       font-size: 14px;
       font-weight: bold;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       cursor: pointer;
-      transition: all 0.25s ease;
+      transition: background .2s ease, color .2s ease, border-color .2s ease;
     }
-
-    #nextButton:hover {
-      background: #222;
-      color: white;
+    #nextButton:hover, #nextButton:focus-visible {
+      background: var(--platform-color);
+      color: #fff;
     }
-
-    /* Temporary backgrounds for the prototype */
-
-    .instagram {
-      background: linear-gradient(135deg, #FCAF45 0%, #F77737 25%, #E1306C 50%, #C13584 75%, #833AB4 100%);
-    }
-
-    .facebook {
-      background: #1877F2;
-    }
-
-    .x {
-      background: #000000;
-    }
-
-    .whatsapp {
-      background: #25D366;
-    }
-
-    .viber {
-      background: #7360F2;
-    }
-
-    .tiktok {
-      background: #000000;
-    }
-
-    .snapchat {
-      background: #FFFC00;
-    }
-
-    .linkedin {
-      background: #0A66C2;
-    }
-
-    .threads {
-      background: #000000;
-    } 
-/* TEXT CONTRAST */
-
-  .identity {
-    color: #FFFFFF;
-    }
-
-  .snapchat .identity {
-    color: #000000;
-    }
-
-/* BUTTON */
-
-  #nextButton {
-    background: #FFFFFF;
-    color: #111111;
-    border: 2px solid #FFFFFF;
-    }
-
-  #nextButton:hover {
-    background: #111111;
-    color: #FFFFFF;
-    border-color: #FFFFFF;
+    #nextButton:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+    @media (prefers-reduced-motion: reduce) {
+      h1, #nextButton { transition: none; }
     }
   </style>
 </head>
-
 <body>
-
-  <main id="experience" class="instagram">
-
+  <main id="experience">
     <div class="identity">
-      <img
-  id="profilePhoto"
-  src="./profile-photo.jpg"
-  alt="Profile photograph"
-  class="profile-photo"
->
-      <div class="number" id="number">IDENTITY 01 / 09</div>
+      <img src="./profile-photo.jpg" alt="Profile photograph" class="profile-photo">
+      <div class="number" id="number">IDENTITY 01</div>
       <h1 id="platform">Instagram</h1>
       <div class="subtitle">A DIFFERENT VERSION OF ME</div>
     </div>
-
-    <button id="nextButton" onclick="nextPage()">
-      FOLLOW ME →
-    </button>
-
+    <button id="nextButton" type="button">FOLLOW ME →</button>
   </main>
-
   <script>
+    // Darker versions of familiar platform colours are used for legibility on ivory.
     const pages = [
-      { name: "Instagram", style: "instagram", button: "FOLLOW ME →" },
-      { name: "Facebook", style: "facebook", button: "ADD FRIEND →" },
-      { name: "X", style: "x", button: "FOLLOW →" },
-      { name: "WhatsApp", style: "whatsapp", button: "JOIN →" },
-      { name: "Viber", style: "viber", button: "CONNECT →" },
-      { name: "TikTok", style: "tiktok", button: "WATCH ME →" },
-      { name: "Snapchat", style: "snapchat", button: "ADD ME →" },
-      { name: "LinkedIn", style: "linkedin", button: "CONNECT →" },
-      { name: "Threads", style: "threads", button: "CONTINUE →" }
+      { name: "Instagram", color: "#a32672", button: "FOLLOW ME →" },
+      { name: "Facebook", color: "#165fc4", button: "ADD FRIEND →" },
+      { name: "X", color: "#111111", button: "FOLLOW →" },
+      { name: "WhatsApp", color: "#137c41", button: "MESSAGE ME →" },
+      { name: "Viber", color: "#6650ad", button: "CONNECT →" },
+      { name: "TikTok", color: "#111111", button: "WATCH ME →" },
+      { name: "Snapchat", color: "#625500", button: "ADD ME →" },
+      { name: "LinkedIn", color: "#095c96", button: "CONNECT →" },
+      { name: "Threads", color: "#111111", button: "CONTINUE →" },
+      { name: "Tinder", color: "#cb4056", button: "SWIPE RIGHT →" },
+      { name: "Hinge", color: "#5c477b", button: "LIKE MY PROFILE →" },
+      { name: "Bumble", color: "#806000", button: "MAKE A MOVE →" },
+      { name: "Turn Up", color: "#8c3f75", button: "MATCH MY MUSIC →" },
+      { name: "Skool", color: "#215aab", button: "JOIN MY COMMUNITY →" },
+      { name: "Pinterest", color: "#bd1e2d", button: "SAVE ME →" },
+      { name: "Reddit", color: "#bd4300", button: "JOIN THE DISCUSSION →" },
+      { name: "Discord", color: "#4c57b8", button: "JOIN MY SERVER →" },
+      { name: "YouTube", color: "#bb1616", button: "SUBSCRIBE →" },
+      { name: "Spotify", color: "#167a3c", button: "LISTEN TO ME →" },
+      { name: "BeReal", color: "#111111", button: "BE REAL →" },
+      { name: "Bluesky", color: "#145cc2", button: "FOLLOW ME →" },
+      { name: "Tumblr", color: "#35465c", button: "REBLOG ME →" },
+      { name: "GitHub", color: "#24292f", button: "SEE MY WORK →" },
+      { name: "Behance", color: "#145ac8", button: "VIEW MY PORTFOLIO →" },
+      { name: "Duolingo", color: "#467b00", button: "LEARN WITH ME →" },
+      { name: "Strava", color: "#b24c00", button: "FOLLOW MY PROGRESS →" },
+      { name: "Letterboxd", color: "#35754a", button: "SEE MY WATCHLIST →" },
+      { name: "Goodreads", color: "#665037", button: "READ WITH ME →" },
+      { name: "Roblox", color: "#111111", button: "ENTER MY WORLD →" }
     ];
 
-    let currentPage = 0;
+    const experience = document.getElementById("experience");
+    const platform = document.getElementById("platform");
+    const number = document.getElementById("number");
+    const button = document.getElementById("nextButton");
+    const total = pages.length;
+
+    function pageFromHash() {
+      const match = /^#page-(\d+)$/.exec(window.location.hash);
+      if (!match) return 0;
+      const index = Number(match[1]) - 1;
+      return Number.isInteger(index) && index >= 0 && index < total ? index : 0;
+    }
+
+    let currentPage = pageFromHash();
+
+    function showPage() {
+      const page = pages[currentPage];
+      experience.style.setProperty("--platform-color", page.color);
+      platform.textContent = page.name;
+      number.textContent = `IDENTITY ${String(currentPage + 1).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
+      button.textContent = page.button;
+    }
 
     function nextPage() {
-      currentPage = (currentPage + 1) % pages.length;
-
-      const page = pages[currentPage];
-
-      document.getElementById("experience").className = page.style;
-      document.getElementById("platform").textContent = page.name;
-      document.getElementById("number").textContent =
-        `IDENTITY ${String(currentPage + 1).padStart(2, "0")} / 09`;
-      document.getElementById("nextButton").textContent = page.button;
-
-      window.history.replaceState(
-        null,
-        "",
-        window.location.pathname + "#page-" + (currentPage + 1)
-      );
+      currentPage = (currentPage + 1) % total;
+      showPage();
+      window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}#page-${currentPage + 1}`);
     }
-  </script>
 
+    button.addEventListener("click", nextPage);
+    window.addEventListener("hashchange", () => {
+      currentPage = pageFromHash();
+      showPage();
+    });
+    showPage();
+  </script>
 </body>
 </html>
