@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="google-site-verification" content="PkAEyiVSAEvaQxJlhXB07RkmN6PnmsQ1WuUdiJyJLbo" />
+  <meta name="google-site-verification" content="PkAEyiVSAEvaQxJlhXB07RkmN6PnmsQ1WuUdiJyJLbo">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#eee8db">
@@ -22,7 +22,7 @@
 
     :root {
       --yarn: #eee8db;
-      --ink: #28251f;
+      --ink: #111111;
     }
 
     body {
@@ -43,7 +43,7 @@
       justify-content: center;
 
       text-align: center;
-      padding: 50px 20px 35px;
+      padding: 45px 20px 35px;
 
       background: var(--yarn);
       color: var(--ink);
@@ -54,56 +54,68 @@
       max-width: 1000px;
     }
 
-    .profile-photo {
-      width: 110px;
-      height: 110px;
+    /* COLOUR-CHANGING CIRCLE */
+
+    .identity-circle {
+      width: 145px;
+      height: 145px;
       border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      margin: 0 auto 28px;
-      border: 3px solid #fffaf1;
+
+      background: var(--platform-color);
+
+      margin: 0 auto 35px;
+
+      transition: background 0.3s ease;
     }
+
+    /* IDENTITY NUMBER */
 
     .number {
-      font-size: 12px;
+      font-size: 16px;
+      font-weight: 600;
       letter-spacing: 3px;
-      margin-bottom: 28px;
-      opacity: 0.72;
+      margin-bottom: 30px;
+      color: #454039;
     }
 
+    /* PLATFORM NAME - ALWAYS BLACK */
+
     h1 {
-      font-size: clamp(38px, 9vw, 90px);
+      font-size: clamp(48px, 10vw, 100px);
       line-height: 1.08;
       font-weight: 700;
       margin: 0;
       letter-spacing: -0.045em;
       overflow-wrap: anywhere;
-
-      color: var(--platform-color);
-      transition: color 0.25s ease;
+      color: #111111;
     }
+
+    /* SUBTITLE */
 
     .subtitle {
-      font-size: 13px;
+      font-size: 17px;
+      font-weight: 500;
       letter-spacing: 2px;
-      margin-top: 20px;
-      opacity: 0.78;
+      margin-top: 25px;
+      color: #454039;
     }
 
+    /* NAVIGATION BUTTON */
+
     #nextButton {
-      margin-top: clamp(45px, 9vh, 100px);
+      margin-top: clamp(55px, 10vh, 110px);
       max-width: 100%;
 
-      border: 2px solid var(--platform-color);
-      border-radius: 4px;
+      border: 3px solid var(--platform-color);
+      border-radius: 5px;
 
-      padding: 16px 32px;
+      padding: 20px 38px;
 
       background: transparent;
       color: var(--platform-color);
 
-      font-size: 14px;
-      font-weight: bold;
+      font-size: 18px;
+      font-weight: 700;
       letter-spacing: 1.5px;
 
       cursor: pointer;
@@ -129,67 +141,89 @@
 
     .artwork-info {
       width: 100%;
-      max-width: 600px;
+      max-width: 650px;
 
       margin-top: clamp(55px, 10vh, 110px);
 
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
 
       text-align: center;
-      color: #776e63;
+      color: #665e54;
       line-height: 1.5;
     }
 
     .artwork-info strong {
-      font-size: 12px;
-      color: #514b43;
+      font-size: 17px;
+      color: #28251f;
       letter-spacing: 0.5px;
     }
 
     .artwork-info span {
-      font-size: 11px;
+      font-size: 15px;
     }
 
     .artwork-info small {
-      font-size: 10px;
-      opacity: 0.85;
+      font-size: 13px;
+      opacity: 0.9;
     }
+
+    /* MOBILE ADJUSTMENTS */
 
     @media (max-width: 480px) {
       #experience {
-        padding: 35px 18px 25px;
+        padding: 35px 18px 30px;
       }
 
-      .profile-photo {
-        width: 95px;
-        height: 95px;
-        margin-bottom: 22px;
+      .identity-circle {
+        width: 115px;
+        height: 115px;
+        margin-bottom: 28px;
       }
 
       .number {
-        margin-bottom: 20px;
+        font-size: 14px;
+        margin-bottom: 22px;
+      }
+
+      h1 {
+        font-size: clamp(43px, 11vw, 65px);
       }
 
       .subtitle {
-        font-size: 11px;
+        font-size: 14px;
+        letter-spacing: 1.3px;
+        margin-top: 20px;
       }
 
       #nextButton {
-        margin-top: 45px;
-        padding: 15px 25px;
-        font-size: 12px;
+        margin-top: 55px;
+        padding: 17px 26px;
+        font-size: 15px;
       }
 
       .artwork-info {
-        margin-top: 55px;
+        margin-top: 60px;
+        gap: 7px;
+      }
+
+      .artwork-info strong {
+        font-size: 15px;
+      }
+
+      .artwork-info span {
+        font-size: 13px;
+      }
+
+      .artwork-info small {
+        font-size: 12px;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      h1,
+      .identity-circle,
       #nextButton {
         transition: none;
       }
@@ -203,11 +237,9 @@
 
     <div class="identity">
 
-      <img
-        src="./profile-photo.jpg"
-        alt="Profile photograph"
-        class="profile-photo"
-      >
+      <!-- COLOUR-CHANGING CIRCLE -->
+
+      <div class="identity-circle" aria-hidden="true"></div>
 
       <div class="number" id="number">
         IDENTITY 01
