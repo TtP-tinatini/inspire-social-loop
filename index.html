@@ -52,34 +52,56 @@
     .identity {
       width: 100%;
       max-width: 1000px;
+
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    /* COLOUR-CHANGING CIRCLE */
+    /* TRANSPARENT CIRCLE WITH COLOURED OUTLINE */
 
     .identity-circle {
-      width: 125px;
-      height: 125px;
+      width: 100px;
+      height: 100px;
+      flex-shrink: 0;
       border-radius: 50%;
-      background: var(--platform-color);
-      border: 5px solid #ffffff;
-      margin: 0 auto 35px;
-      transition: background 0.3s ease;
+
+      background: transparent;
+      border: 6px solid var(--platform-color);
+
+      margin: 0 auto 28px;
+
+      transition: border-color 0.3s ease;
+    }
+
+    /* INSTAGRAM GRADIENT CIRCLE */
+
+    #experience.instagram .identity-circle {
+      border: 6px solid transparent;
+
+      background:
+        linear-gradient(var(--yarn), var(--yarn)) padding-box,
+        linear-gradient(
+          135deg,
+          #FCAF45 0%,
+          #F77737 25%,
+          #E1306C 50%,
+          #C13584 75%,
+          #833AB4 100%
+        ) border-box;
     }
 
     /* IDENTITY NUMBER */
 
     .number {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 600;
-      letter-spacing: 3px;
+      letter-spacing: 2.5px;
       margin-bottom: 52px;
       color: #454039;
     }
 
-    /* PLATFORM NAME - ALWAYS BLACK */
+    /* PLATFORM NAME */
 
     h1 {
       font-size: clamp(48px, 10vw, 100px);
@@ -88,7 +110,26 @@
       margin: 12px 0 0;
       letter-spacing: -0.045em;
       overflow-wrap: anywhere;
-      color: #111111;
+
+      color: var(--platform-color);
+      transition: color 0.25s ease;
+    }
+
+    /* INSTAGRAM GRADIENT PLATFORM NAME */
+
+    #experience.instagram h1 {
+      background: linear-gradient(
+        110deg,
+        #F77737 0%,
+        #E1306C 40%,
+        #C13584 70%,
+        #833AB4 100%
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
     }
 
     /* SUBTITLE */
@@ -101,19 +142,19 @@
       color: #454039;
     }
 
-    /* NAVIGATION BUTTON */
+    /* BLACK NAVIGATION BUTTON */
 
     #nextButton {
       margin-top: clamp(85px, 10vh, 110px);
       max-width: 100%;
 
-      border: 3px solid var(--platform-color);
+      border: 3px solid #111111;
       border-radius: 5px;
 
       padding: 20px 38px;
 
       background: transparent;
-      color: var(--platform-color);
+      color: #111111;
 
       font-size: 18px;
       font-weight: 700;
@@ -123,18 +164,17 @@
 
       transition:
         background 0.2s ease,
-        color 0.2s ease,
-        border-color 0.2s ease;
+        color 0.2s ease;
     }
 
     #nextButton:hover,
     #nextButton:focus-visible {
-      background: var(--platform-color);
+      background: #111111;
       color: #ffffff;
     }
 
     #nextButton:focus-visible {
-      outline: 3px solid var(--ink);
+      outline: 3px solid #454039;
       outline-offset: 4px;
     }
 
@@ -144,7 +184,7 @@
       width: 100%;
       max-width: 650px;
 
-      margin-top: clamp(30px, 10vh, 110px);
+      margin-top: 30px;
 
       display: flex;
       flex-direction: column;
@@ -182,16 +222,12 @@
         width: 100px;
         height: 100px;
         margin-bottom: 28px;
-        border: 4px solid #ffffff;
       }
 
       .number {
-        font-size: 14px;
-        font-weight: 600;
+        font-size: 12px;
         letter-spacing: 2.5px;
-        margin-bottom: 52px;
-        color: #454039;
-
+        margin-bottom: 38px;
       }
 
       h1 {
@@ -230,6 +266,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       .identity-circle,
+      h1,
       #nextButton {
         transition: none;
       }
@@ -243,7 +280,7 @@
 
     <div class="identity">
 
-      <!-- COLOUR-CHANGING CIRCLE -->
+      <!-- TRANSPARENT CIRCLE WITH COLOURED OUTLINE -->
 
       <div class="identity-circle" aria-hidden="true"></div>
 
@@ -288,17 +325,17 @@
 
   <script>
 
-    // Platform colours adapted for legibility on ivory.
+    // Representative platform colours.
 
     const pages = [
       { name: "Instagram", color: "#a32672", button: "FOLLOW ME →" },
-      { name: "Facebook", color: "#165fc4", button: "ADD FRIEND →" },
+      { name: "Facebook", color: "#1877F2", button: "ADD FRIEND →" },
       { name: "X", color: "#111111", button: "FOLLOW →" },
-      { name: "WhatsApp", color: "#137c41", button: "MESSAGE ME →" },
-      { name: "Viber", color: "#6650ad", button: "CONNECT →" },
+      { name: "WhatsApp", color: "#25D366", button: "MESSAGE ME →" },
+      { name: "Viber", color: "#7360F2", button: "CONNECT →" },
       { name: "TikTok", color: "#111111", button: "WATCH ME →" },
       { name: "Snapchat", color: "#FFFC00", button: "ADD ME →" },
-      { name: "LinkedIn", color: "#095c96", button: "CONNECT →" },
+      { name: "LinkedIn", color: "#0A66C2", button: "CONNECT →" },
       { name: "Threads", color: "#111111", button: "CONTINUE →" },
       { name: "Tinder", color: "#cb4056", button: "SWIPE RIGHT →" },
       { name: "Hinge", color: "#5c477b", button: "LIKE MY PROFILE →" },
@@ -349,6 +386,11 @@
 
     function showPage() {
       const page = pages[currentPage];
+
+      experience.classList.toggle(
+        "instagram",
+        page.name === "Instagram"
+      );
 
       experience.style.setProperty(
         "--platform-color",
