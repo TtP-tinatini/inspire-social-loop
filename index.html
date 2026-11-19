@@ -142,10 +142,58 @@
       color: #454039;
     }
 
+    /* BOTTOM SECTION */
+
+    .bottom-section {
+      width: 100%;
+      max-width: 650px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      /* Original gap between subtitle and button */
+      margin-top: clamp(85px, 10vh, 110px);
+
+      /* Move only this group 65px downward */
+      transform: translateY(65px);
+    }
+
+    /* ARTWORK INFORMATION */
+
+    .artwork-info {
+      width: 100%;
+      max-width: 650px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+
+      text-align: center;
+      color: #665e54;
+      line-height: 1.5;
+    }
+
+    .artwork-info strong {
+      font-size: 17px;
+      color: #28251f;
+      letter-spacing: 0.5px;
+    }
+
+    .artwork-info span {
+      font-size: 15px;
+    }
+
+    .artwork-info small {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
     /* BLACK NAVIGATION BUTTON */
 
     #nextButton {
-      margin-top: clamp(85px, 10vh, 110px);
+      margin-top: 30px;
       max-width: 100%;
 
       border: 3px solid #111111;
@@ -178,39 +226,6 @@
       outline-offset: 4px;
     }
 
-    /* ARTWORK INFORMATION */
-
-    .artwork-info {
-      width: 100%;
-      max-width: 650px;
-
-      margin-top: 30px;
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-
-      text-align: center;
-      color: #665e54;
-      line-height: 1.5;
-    }
-
-    .artwork-info strong {
-      font-size: 17px;
-      color: #28251f;
-      letter-spacing: 0.5px;
-    }
-
-    .artwork-info span {
-      font-size: 15px;
-    }
-
-    .artwork-info small {
-      font-size: 13px;
-      opacity: 0.9;
-    }
-
     /* MOBILE ADJUSTMENTS */
 
     @media (max-width: 480px) {
@@ -240,14 +255,17 @@
         margin-top: 8px;
       }
 
-      #nextButton {
+      .bottom-section {
         margin-top: 65px;
+      }
+
+      #nextButton {
+        margin-top: 25px;
         padding: 17px 26px;
         font-size: 15px;
       }
 
       .artwork-info {
-        margin-top: 25px;
         gap: 7px;
       }
 
@@ -298,28 +316,32 @@
 
     </div>
 
-    <button id="nextButton" type="button">
-      FOLLOW ME →
-    </button>
+    <!-- BOTTOM SECTION MOVED 65PX LOWER -->
 
-    <!-- ARTWORK DESCRIPTION -->
+    <div class="bottom-section">
 
-    <footer class="artwork-info">
+      <footer class="artwork-info">
 
-      <strong>
-        Identity on Loop
-      </strong>
+        <strong>
+          Identity on Loop
+        </strong>
 
-      <span>
-        An interactive artwork exploring digital identity.
-      </span>
+        <span>
+          An interactive artwork exploring digital identity.
+        </span>
 
-      <small>
-        Independent art project · Not affiliated with
-        the platforms represented.
-      </small>
+        <small>
+          Independent art project · Not affiliated with
+          the platforms represented.
+        </small>
 
-    </footer>
+      </footer>
+
+      <button id="nextButton" type="button">
+        FOLLOW ME →
+      </button>
+
+    </div>
 
   </main>
 
