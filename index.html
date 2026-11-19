@@ -184,7 +184,7 @@
       width: 100%;
       max-width: 650px;
 
-      margin-top: 30px;
+      margin-top: 25px;
 
       display: flex;
       flex-direction: column;
@@ -210,10 +210,26 @@
       font-size: 13px;
       opacity: 0.9;
     }
+    /* MOVE BUTTON AND ARTWORK INFORMATION LOWER */
+
+    #nextButton {
+      transform: translateY(65px);
+    }
+
+    .artwork-info {
+      transform: translateY(65px);
+    }
 
     /* MOBILE ADJUSTMENTS */
 
     @media (max-width: 480px) {
+      #nextButton {
+        transform: translateY(55px);
+      }
+
+      .artwork-info {
+        transform: translateY(55px);
+      }
       #experience {
         padding: 35px 18px 30px;
       }
