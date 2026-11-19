@@ -1,80 +1,256 @@
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#eee8db">
   <meta name="color-scheme" content="light">
-  <title>Identity on Loop</title>
+
+  <title>Identity on Loop | Interactive Art Project</title>
+
+  <meta
+    name="description"
+    content="Identity on Loop is an independent interactive artwork exploring digital identity through fictional social media-inspired interfaces."
+  >
+
   <style>
-    * { box-sizing: border-box; }
-    :root { --yarn: #eee8db; --ink: #28251f; }
-    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--yarn); }
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --yarn: #eee8db;
+      --ink: #28251f;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--yarn);
+    }
+
     #experience {
       --platform-color: #a32672;
+
       min-height: 100vh;
       min-height: 100svh;
+
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+
       text-align: center;
-      padding: 40px 20px;
+      padding: 50px 20px 35px;
+
       background: var(--yarn);
       color: var(--ink);
     }
-    .identity { width: 100%; max-width: 1000px; }
-    .profile-photo {
-      width: 110px; height: 110px; border-radius: 50%; object-fit: cover;
-      display: block; margin: 0 auto 28px; border: 3px solid #fffaf1;
+
+    .identity {
+      width: 100%;
+      max-width: 1000px;
     }
-    .number { font-size: 12px; letter-spacing: 3px; margin-bottom: 28px; opacity: .72; }
+
+    .profile-photo {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 28px;
+      border: 3px solid #fffaf1;
+    }
+
+    .number {
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin-bottom: 28px;
+      opacity: 0.72;
+    }
+
     h1 {
       font-size: clamp(38px, 9vw, 90px);
       line-height: 1.08;
       font-weight: 700;
       margin: 0;
-      letter-spacing: -.045em;
+      letter-spacing: -0.045em;
       overflow-wrap: anywhere;
+
       color: var(--platform-color);
-      transition: color .25s ease;
+      transition: color 0.25s ease;
     }
-    .subtitle { font-size: 13px; letter-spacing: 2px; margin-top: 20px; opacity: .78; }
+
+    .subtitle {
+      font-size: 13px;
+      letter-spacing: 2px;
+      margin-top: 20px;
+      opacity: 0.78;
+    }
+
     #nextButton {
-      margin-top: clamp(55px, 12vh, 120px);
+      margin-top: clamp(45px, 9vh, 100px);
       max-width: 100%;
+
       border: 2px solid var(--platform-color);
       border-radius: 4px;
+
       padding: 16px 32px;
+
       background: transparent;
       color: var(--platform-color);
+
       font-size: 14px;
       font-weight: bold;
       letter-spacing: 1.5px;
+
       cursor: pointer;
-      transition: background .2s ease, color .2s ease, border-color .2s ease;
+
+      transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
     }
-    #nextButton:hover, #nextButton:focus-visible {
+
+    #nextButton:hover,
+    #nextButton:focus-visible {
       background: var(--platform-color);
-      color: #fff;
+      color: #ffffff;
     }
-    #nextButton:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+
+    #nextButton:focus-visible {
+      outline: 3px solid var(--ink);
+      outline-offset: 4px;
+    }
+
+    /* ARTWORK INFORMATION */
+
+    .artwork-info {
+      width: 100%;
+      max-width: 600px;
+
+      margin-top: clamp(55px, 10vh, 110px);
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+
+      text-align: center;
+      color: #776e63;
+      line-height: 1.5;
+    }
+
+    .artwork-info strong {
+      font-size: 12px;
+      color: #514b43;
+      letter-spacing: 0.5px;
+    }
+
+    .artwork-info span {
+      font-size: 11px;
+    }
+
+    .artwork-info small {
+      font-size: 10px;
+      opacity: 0.85;
+    }
+
+    @media (max-width: 480px) {
+      #experience {
+        padding: 35px 18px 25px;
+      }
+
+      .profile-photo {
+        width: 95px;
+        height: 95px;
+        margin-bottom: 22px;
+      }
+
+      .number {
+        margin-bottom: 20px;
+      }
+
+      .subtitle {
+        font-size: 11px;
+      }
+
+      #nextButton {
+        margin-top: 45px;
+        padding: 15px 25px;
+        font-size: 12px;
+      }
+
+      .artwork-info {
+        margin-top: 55px;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
-      h1, #nextButton { transition: none; }
+      h1,
+      #nextButton {
+        transition: none;
+      }
     }
   </style>
 </head>
+
 <body>
+
   <main id="experience">
+
     <div class="identity">
-      <img src="./profile-photo.jpg" alt="Profile photograph" class="profile-photo">
-      <div class="number" id="number">IDENTITY 01</div>
-      <h1 id="platform">Instagram</h1>
-      <div class="subtitle">A DIFFERENT VERSION OF ME</div>
+
+      <img
+        src="./profile-photo.jpg"
+        alt="Profile photograph"
+        class="profile-photo"
+      >
+
+      <div class="number" id="number">
+        IDENTITY 01
+      </div>
+
+      <h1 id="platform">
+        Instagram
+      </h1>
+
+      <div class="subtitle">
+        A DIFFERENT VERSION OF ME
+      </div>
+
     </div>
-    <button id="nextButton" type="button">FOLLOW ME →</button>
+
+    <button id="nextButton" type="button">
+      FOLLOW ME →
+    </button>
+
+    <!-- ARTWORK DESCRIPTION -->
+
+    <footer class="artwork-info">
+
+      <strong>
+        Identity on Loop
+      </strong>
+
+      <span>
+        An interactive artwork exploring digital identity.
+      </span>
+
+      <small>
+        Independent art project · Not affiliated with
+        the platforms represented.
+      </small>
+
+    </footer>
+
   </main>
+
   <script>
-    // Darker versions of familiar platform colours are used for legibility on ivory.
+
+    // Platform colours adapted for legibility on ivory.
+
     const pages = [
       { name: "Instagram", color: "#a32672", button: "FOLLOW ME →" },
       { name: "Facebook", color: "#165fc4", button: "ADD FRIEND →" },
@@ -111,37 +287,65 @@
     const platform = document.getElementById("platform");
     const number = document.getElementById("number");
     const button = document.getElementById("nextButton");
+
     const total = pages.length;
 
     function pageFromHash() {
       const match = /^#page-(\d+)$/.exec(window.location.hash);
-      if (!match) return 0;
+
+      if (!match) {
+        return 0;
+      }
+
       const index = Number(match[1]) - 1;
-      return Number.isInteger(index) && index >= 0 && index < total ? index : 0;
+
+      return Number.isInteger(index) &&
+        index >= 0 &&
+        index < total
+        ? index
+        : 0;
     }
 
     let currentPage = pageFromHash();
 
     function showPage() {
       const page = pages[currentPage];
-      experience.style.setProperty("--platform-color", page.color);
+
+      experience.style.setProperty(
+        "--platform-color",
+        page.color
+      );
+
       platform.textContent = page.name;
-      number.textContent = `IDENTITY ${String(currentPage + 1).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
+
+      number.textContent =
+        `IDENTITY ${String(currentPage + 1).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
+
       button.textContent = page.button;
     }
 
     function nextPage() {
       currentPage = (currentPage + 1) % total;
+
       showPage();
-      window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}#page-${currentPage + 1}`);
+
+      window.history.replaceState(
+        null,
+        "",
+        `${window.location.pathname}${window.location.search}#page-${currentPage + 1}`
+      );
     }
 
     button.addEventListener("click", nextPage);
+
     window.addEventListener("hashchange", () => {
       currentPage = pageFromHash();
       showPage();
     });
+
     showPage();
+
   </script>
+
 </body>
 </html>
