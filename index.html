@@ -70,6 +70,7 @@
       border: 6px solid var(--platform-color);
 
       margin: 0 auto 28px;
+      transform: translateY(32px);
 
       transition: border-color 0.3s ease;
     }
@@ -98,6 +99,7 @@
       font-weight: 600;
       letter-spacing: 2.5px;
       margin-bottom: 52px;
+      transform: translateY(22px);
       color: #454039;
     }
 
@@ -185,9 +187,17 @@
       font-size: 15px;
     }
 
-    .artwork-info small {
+    .independent-note {
+      max-width: 650px;
       font-size: 13px;
+      line-height: 1.5;
+      color: #665e54;
       opacity: 0.9;
+      text-align: center;
+    }
+
+    .artwork-info {
+      margin-top: 25px;
     }
 
     /* BLACK NAVIGATION BUTTON */
@@ -277,7 +287,7 @@
         font-size: 13px;
       }
 
-      .artwork-info small {
+      .independent-note {
         font-size: 12px;
       }
     }
@@ -320,26 +330,19 @@
 
     <div class="bottom-section">
 
-      <footer class="artwork-info">
-
-        <strong>
-          Identity on Loop
-        </strong>
-
-        <span>
-          An interactive artwork exploring digital identity.
-        </span>
-
-        <small>
-          Independent art project · Not affiliated with
-          the platforms represented.
-        </small>
-
-      </footer>
+      <small class="independent-note">
+        Independent art project · Not affiliated with
+        the platforms represented.
+      </small>
 
       <button id="nextButton" type="button">
         FOLLOW ME →
       </button>
+
+      <footer class="artwork-info">
+        <strong>Identity on Loop</strong>
+        <span>An interactive artwork exploring digital identity.</span>
+      </footer>
 
     </div>
 
